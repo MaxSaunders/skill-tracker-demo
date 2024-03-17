@@ -1,6 +1,9 @@
 # Skill Tracker App
 
 A website developed by Max Saunders
+
+Developed using shadcn and tailwind
+
 The purpose of this app is to be able to track the competencies of your team
 
 
