@@ -9,8 +9,8 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "../components/ui/table"
-import Pager from '../components/ui/pager';
+} from "@/components/ui/table"
+import Pager from '@/components/ui/pager';
 
 import useGetPeople from '../Helpers/useGetPeople'
 import { Person, UserSkill } from '../Types/Person';

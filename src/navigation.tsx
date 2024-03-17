@@ -8,10 +8,10 @@ import {
     // NavigationMenuIndicator,
     // NavigationMenuTrigger,
     // NavigationMenuViewport,
-} from './components/ui/navigation-menu'
+} from '@/components/ui/navigation-menu'
 import { IoLogoChrome } from "react-icons/io5";
 
-import { Button } from './components/ui/button';
+import { Button } from '@/components/ui/button';
 import './navigation.css'
 import { mockEnabled, toggleMock } from './Mock';
 
