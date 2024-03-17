@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { HashRouter, Route, Routes } from "react-router-dom"
 
 import Navigation from "./navigation"
 import MySkills from "./Pages/myskills"
@@ -9,7 +9,7 @@ import './App.css'
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navigation />
       <div className='flex justify-center routes-wrapper'>
         <div className='w-11/12'>
@@ -22,7 +22,7 @@ const App = () => {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
