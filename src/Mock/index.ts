@@ -25,7 +25,10 @@ export const enableMock = () => {
 }
 
 export const disableMock = () => {
-  clearDbs()
+  if (peopleDB.count() !== 0) {
+    clearDbs()
+    window.location.reload()
+  }
   window.localStorage.setItem("MOCK_ENABLED", 'f')
 }
 

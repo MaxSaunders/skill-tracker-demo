@@ -12,13 +12,13 @@ import {
 import { IoLogoChrome } from "react-icons/io5";
 
 import { Button } from '@/components/ui/button';
-import './navigation.css'
 import { mockEnabled, toggleMock } from './Mock';
+import './navigation.css'
 
 const Navigation = () => {
     const itemClassName = 'h-full py-2 px-10 hover:bg-blue-300 rounded hover:text-black transition duration-200'
     return (
-        <NavigationMenu className='w-screen navbar font-bold text-base text-gray-300'>
+        <NavigationMenu className='w-screen sticky -top-0 navbar font-bold text-base text-gray-300'>
             <NavigationMenuList className='w-screen flex justify-start px-24'>
                 <NavigationMenuItem className='h-full py-2 px-10'>
                     <Link to='/'>
