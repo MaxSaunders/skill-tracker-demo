@@ -1,6 +1,6 @@
 import { Entry } from "../Mock/tools/createMockServiceDb"
 
-export type UserSkill = {
+export type UserSkill = Entry & {
     name: string,
     rating: 0|1|2|3|4
 }

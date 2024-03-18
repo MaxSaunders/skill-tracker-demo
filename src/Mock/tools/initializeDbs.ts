@@ -27,7 +27,11 @@ const initializeDbs = () => {
   clearDbs()
 
   mockSkills.forEach(entry => {
-    skillsDB.add({id: generateId(), name: entry} as Skill)
+    skillsDB.add({
+      id: generateId(),
+      name: entry,
+      description: chance.sentence()
+    } as Skill)
   })
 
   const numPeople = chance.integer({ min: 15, max: 30 })
@@ -35,11 +39,12 @@ const initializeDbs = () => {
   for (let j = 0; j < numPeople; j++) {
     const name = chance.name()
 
-    const userSkills = mockSkills.map(skill => {
+    const userSkills = skillsDB.list().map(skill => {
       const rating = chance.integer({min: 0, max: 4})
 
       return {
-        name: skill,
+        name: skill.name,
+        id: skill.id,
         rating
       } as UserSkill
     })

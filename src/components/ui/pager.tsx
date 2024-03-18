@@ -24,7 +24,7 @@ const Pager: React.FC<PagerProps> = ({ current, size = 5, setPage, totalPages })
     const first = (current < (size / 2)) ? 0 : Math.ceil(current - (size / 2))
     const pageArray = []
     for (let i = first; i < (first + size); i++) {
-        if (totalPages && i > totalPages) {
+        if (totalPages && (i + 1) > totalPages) {
             break
         }
         pageArray.push(i)
@@ -45,18 +45,18 @@ const Pager: React.FC<PagerProps> = ({ current, size = 5, setPage, totalPages })
     return (
         <Pagination className='mt-5 text-white'>
             <PaginationContent>
-                <PaginationItem key='prev' onClick={setPrev}>
-                    <PaginationPrevious href="#" />
+                <PaginationItem className='cursor-pointer' key='prev' onClick={setPrev}>
+                    <PaginationPrevious />
                 </PaginationItem>
                 {pageArray.map(page =>
-                    <PaginationItem key={page} onClick={() => setPage(page)}>
-                        <PaginationLink href="#" isActive={page == current}>
+                    <PaginationItem className='cursor-pointer' key={page} onClick={() => setPage(page)}>
+                        <PaginationLink className={`${(page == current) ? 'border border-input' : ''}}`}>
                             {page + 1}
                         </PaginationLink>
                     </PaginationItem>
                 )}
-                <PaginationItem key='next' onClick={setNext}>
-                    <PaginationNext href="#" />
+                <PaginationItem className='cursor-pointer' key='next' onClick={setNext}>
+                    <PaginationNext />
                 </PaginationItem>
             </PaginationContent>
         </Pagination>
