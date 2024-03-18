@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { ImSpinner9 } from "react-icons/im";
-import { FaStar, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import {
     Table,
     TableBody,
