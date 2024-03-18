@@ -18,11 +18,12 @@ import { Skill } from '@/Types/Skill'
 import './myskills.css'
 
 interface SkillRatingsProps {
-    id: number;
+    id: string;
     name: string;
 }
 
 const SkillRatings: React.FC<SkillRatingsProps> = ({ id, name }) => {
+    console.log(id, name)
     const [rating, setRating] = useState<number>(0)
     const [hovered, setHovered] = useState<number>(0)
 
@@ -55,6 +56,8 @@ const MySkills = () => {
     const { loading, results: skills, fetch: fetchSkills } = useGetSkills()
     const { fetch: fetchPerson, resultsSingle: person } = useGetPeople()
     // TODO: need to combine skills with person.skills to get stored ratings
+
+    console.log(person)
 
     useEffect(() => {
         fetchSkills()
