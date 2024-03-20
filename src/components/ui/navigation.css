@@ -2,3 +2,7 @@
     background-color: #1e293b;
     border-bottom: solid black 1px;
 }
+
+.navbar-pad {
+    padding-top: .8rem;
+}

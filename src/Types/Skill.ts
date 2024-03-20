@@ -1,4 +1,4 @@
-import { Entry } from "../Mock/tools/createMockServiceDb"
+import { Entry } from "./Entry"
 
 export type Skill = Entry & {
     name: string,

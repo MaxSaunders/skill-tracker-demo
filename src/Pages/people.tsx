@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/table"
 import Pager from '@/components/ui/pager';
 import StarRating from '@/components/ui/starRating';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 import useGetPeople from '../Helpers/useGetPeople'
 import { Person, UserSkill } from '../Types/Person';
@@ -25,20 +27,28 @@ const People = () => {
     const { loading: loadingSkills, resultsAll: people, fetchAll: fetchPeople } = useGetPeople()
     const [pageResults, setPageResults] = useState<Person[]>([])
     const [page, setPage] = useState<number>(0)
+    const [filter, setFilter] = useState<string>('')
+    const [filteredResults, setFilteredResults] = useState<Person[]>([])
 
     useEffect(() => {
         fetchPeople()
     }, [fetchPeople])
 
     useEffect(() => {
-        const temp = people.slice(page * pageSize, (page * pageSize) + pageSize)
+        setFilteredResults(people.filter(a => {
+            return a.name.toLowerCase().includes(filter.toLowerCase())
+        }))
+    }, [filter, people])
+
+    useEffect(() => {
+        const temp = filteredResults.slice(page * pageSize, (page * pageSize) + pageSize)
         // if (temp.length < pageSize) {
         //     for (let i = 0; i < (pageSize - temp.length); i++) {
         //         temp.push({ id: '', name: '', skills: [], topSkill: {} as UserSkill } as Person)
         //     }
         // }
         setPageResults(temp)
-    }, [people, page])
+    }, [page, filter, filteredResults])
 
     if (loadingSkills) {
         return (
@@ -50,9 +60,16 @@ const People = () => {
 
     return (
         <>
-            <h1 className='text-3xl font-bold px-2 py-4 text-white border-b border-black'>
-                People
-            </h1>
+            <div className='flex justify-between border-b border-black items-center'>
+                <h1 className='text-3xl font-bold px-2 py-4 text-white'>
+                    People
+                </h1>
+
+                <span className='w-full max-w-sm items-center flex'>
+                    <Label className='mr-4 min-w-min text-white font-bold text-xl'>Search</Label>
+                    <Input id='person' placeholder='Name' onChange={e => setFilter(e.target.value)} />
+                </span>
+            </div>
             <Table className='text-white'>
                 <TableCaption>A list of your tracked employees</TableCaption>
                 <TableHeader>
@@ -65,7 +82,7 @@ const People = () => {
                 </TableHeader>
                 <TableBody>
                     {pageResults.map(({ id, name, skills, topSkill }) =>
-                        <TableRow key={id}>
+                        <TableRow key={id} className=''>
                             <TableCell className="font-medium">
                                 <Link to={`/people/${id}`} className='hover:text-blue-500 flex items-center'>
                                     <span className='mr-2'>
@@ -77,7 +94,7 @@ const People = () => {
                                 </Link>
                             </TableCell>
                             <TableCell>
-                                <div className='grid 2xl:grid-cols-6 lg:grid-cols-3 grid-cols-1 gap-y-2'>
+                                <div className='grid 3xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 gap-y-2'>
                                     {GetTopSkills(skills).map(({ rating, name }) =>
                                         <div className='flex items-center' key={name}>
                                             <span className='font-bold mr-1'>
@@ -90,13 +107,15 @@ const People = () => {
                                     )}
                                 </div>
                             </TableCell>
-                            <TableCell className='flex items-center'>
-                                <span className='font-bold mr-1 text-yellow-500'>
-                                    {topSkill?.name}
-                                </span>
-                                <span className={`flex items-baseline text-yellow-500`}>
-                                    <StarRating rating={topSkill?.rating} />
-                                </span>
+                            <TableCell>
+                                <div className='flex items-center min-h-full'>
+                                    <span className='font-bold mr-1 text-yellow-500'>
+                                        {topSkill?.name}
+                                    </span>
+                                    <span className={`flex items-baseline text-yellow-500`}>
+                                        <StarRating rating={topSkill?.rating} />
+                                    </span>
+                                </div>
                             </TableCell>
                             <TableCell>
                                 <span className='flex items-center'>
@@ -109,7 +128,7 @@ const People = () => {
                     )}
                 </TableBody>
             </Table>
-            <Pager current={page} size={5} setPage={setPage} totalPages={Math.ceil(people.length / pageSize)} />
+            <Pager current={page} size={5} setPage={setPage} totalPages={Math.ceil(filteredResults.length / pageSize)} />
         </>
     )
 }
