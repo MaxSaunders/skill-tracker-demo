@@ -122,7 +122,7 @@ const Skills = () => {
                 Skills
             </h1>
             <Table className='text-white'>
-                <TableCaption>A list of your tracked competencies</TableCaption>
+                <TableCaption>A list of your company's tracked competencies</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead className="font-bold w-[100px]">Skill</TableHead>

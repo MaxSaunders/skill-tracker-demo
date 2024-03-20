@@ -78,6 +78,10 @@
   .text-orange {
       color: orange;
   }
+
+  tr {
+    border-bottom: 1px rgb(55 65 81) solid !important;
+  }
 }
  
 @layer base {

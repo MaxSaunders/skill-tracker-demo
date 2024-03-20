@@ -1,6 +1,4 @@
-export type Entry = {
-  id: string
-}
+import { Entry } from "@/Types/Entry"
 
 const createMockServiceDb = <T extends Entry>(browserStorage: Storage) => (DB_NAME: string) => {
   let entries: T[] = []

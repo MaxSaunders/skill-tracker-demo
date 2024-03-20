@@ -83,7 +83,7 @@ const MySkills = () => {
                 My Skills
             </h1>
             <Table className='text-white'>
-                <TableCaption>A list of your tracked competencies</TableCaption>
+                <TableCaption>A list of your personal tracked competencies</TableCaption>
                 <TableHeader>
                     <TableRow>
                         <TableHead className="font-bold w-[200px]">Skill</TableHead>

@@ -1,6 +1,6 @@
 import { HashRouter, Route, Routes } from "react-router-dom"
 
-import Navigation from "./navigation"
+import Navigation from "./components/ui/navigation"
 import MySkills from "./Pages/myskills"
 import Skills from "./Pages/skills"
 import People from "./Pages/people"

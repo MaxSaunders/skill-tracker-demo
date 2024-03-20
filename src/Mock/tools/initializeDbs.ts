@@ -8,19 +8,13 @@ import { Person, UserSkill } from '../../Types/Person'
 const chance = new Chance()
 
 const mockSkills = [
-  'Java',
-  'Javascript',
-  'Nodejs',
-  'Python',
-  'SQL',
-  'AWS',
-  'HTML',
-  'CSS',
-  'Reactjs',
-  '.NET',
-  'C',
-  'C#',
-  'C++',
+  'Java', 'PHP', 'Laravel', 'Django',
+  'Javascript', 'Nodejs', 'Python', 'SQL',
+  'AWS', 'HTML', 'CSS', 'Reactjs',
+  'NextJS', '.NET', 'C', 'C#',
+  'C++', 'Database', 'S3', 'EC2',
+  'Lambda','Bedrock','IOT','API Gateway',
+  'Spark', 'Vue', 'Angular',
 ]
 
 const initializeDbs = () => {
