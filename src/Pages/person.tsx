@@ -13,11 +13,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import './person.css'
 
-const getColor = (name: string) => {
-    const colors = ['blue-700', 'yellow-700', 'red-500', 'green-600', 'gray-500']
-    const charIndex = name.charCodeAt(0) - 65
-    const colorIndex = charIndex % colors.length;
-    return `bg-${colors[colorIndex]}`
+const getColor = () => {
+    // const getColor = (name: string) => {
+    // const colors = ['blue-700', 'yellow-700', 'red-500', 'green-600', 'gray-500']
+    // const charIndex = name.charCodeAt(0) - 65
+    // const colorIndex = charIndex % colors.length;
+    // return `bg-${colors[colorIndex]}`
+    return 'bg-green-700'
 }
 
 const getInitials = (name: string): string => {
