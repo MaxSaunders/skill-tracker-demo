@@ -2,12 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import {
     NavigationMenu,
     NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    // NavigationMenuContent,
-    // NavigationMenuIndicator,
-    // NavigationMenuTrigger,
-    // NavigationMenuViewport,
+    NavigationMenuList
 } from '@/components/ui/navigation-menu'
 
 import { Button } from '@/components/ui/button';
@@ -25,22 +20,20 @@ interface NavItemProps {
 const NavItem: React.FC<NavItemProps> = ({ label, to, pathName, className, activeClassName }) =>
     <NavigationMenuItem className='h-full navbar-pad flex min-w-max'>
         <Link className={`${className} ${to === pathName ? activeClassName : ''}`} to={to}>
-            <NavigationMenuLink>
-                {label}
-            </NavigationMenuLink>
+            {label}
         </Link>
     </NavigationMenuItem>
 
 const Navigation = () => {
     const { pathname } = useLocation()
-    const itemClassName = 'px-10 hover:border-b border-green-600 hover:text-green-600 transition duration-200'
+    const itemClassName = 'px-10 text-xl hover:border-b border-green-600 hover:text-green-600 transition duration-200'
     const activeClassName = 'text-green-600 border-b'
     return (
         <NavigationMenu className='w-screen sticky -top-0 navbar font-bold text-base text-gray-300'>
             <NavigationMenuList className='w-screen justify-start h-12'>
-                <NavigationMenuItem className='py-2 px-10'>
-                    <Link to='/'>
-                        {/* <NavigationMenuLink className='hover:text-transparent'>
+                <NavigationMenuItem className='h-full py-2 px-10 items-center flex'>
+                    <Link to='/' className='h-full flex text-xl'>
+                        {/* <div className='hover:text-transparent'>
                             <span className='uppercase text-green-600'>S</span>
                             <span className='uppercase'>k</span>
                             <span className='uppercase'>i</span>
@@ -53,8 +46,8 @@ const Navigation = () => {
                             <span className='uppercase text-green-600'>k</span>
                             <span className='uppercase'>e</span>
                             <span className='uppercase'>r</span>
-                        </NavigationMenuLink> */}
-                        <NavigationMenuLink className='transition hover:text-green-600'>
+                        </div> */}
+                        {/* <div className='h-full items-center flex transition hover:text-green-600'>
                             <span className='uppercase'>S</span>
                             <span className='uppercase'>k</span>
                             <span className='uppercase'>i</span>
@@ -67,7 +60,21 @@ const Navigation = () => {
                             <span className='uppercase'>k</span>
                             <span className='uppercase text-green-600'>e</span>
                             <span className='uppercase text-green-600'>r</span>
-                        </NavigationMenuLink>
+                        </div> */}
+                        <div className='h-full items-center flex transition hover:text-green-600'>
+                            <span className='uppercase text-green-600'>S</span>
+                            <span className='uppercase text-green-600'>k</span>
+                            <span className='uppercase text-green-600'>i</span>
+                            <span className='uppercase text-green-600'>l</span>
+                            <span className='uppercase text-green-600'>l</span>
+                            <span className='uppercase'>T</span>
+                            <span className='uppercase'>r</span>
+                            <span className='uppercase'>a</span>
+                            <span className='uppercase'>c</span>
+                            <span className='uppercase'>k</span>
+                            <span className='uppercase'>e</span>
+                            <span className='uppercase'>r</span>
+                        </div>
                     </Link>
                 </NavigationMenuItem>
                 <NavItem label='Home' to='/' pathName={pathname} className={itemClassName} activeClassName={activeClassName} />

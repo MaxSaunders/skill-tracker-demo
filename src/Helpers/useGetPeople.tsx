@@ -7,35 +7,44 @@ const useGetPeople = () => {
     const [resultsSingle, setResultsSingle] = useState<Person>()
     const [loading, setLoading] = useState(false)
 
-    const fetchAll = useCallback((searchString: string = '') => {
+    const apiCall = useCallback((searchIdString: string = '') => {
+        return new Promise<Person[]>((resolve, reject) => {
+            try {
+                const people = peopleDB.list()
+
+                if (searchIdString) {
+                    const r = people.filter(i => i.id === searchIdString)
+                    resolve(r)
+                } else {
+                    resolve(people)
+                }
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }, [])
+
+    const fetchAll = useCallback(() => {
         setLoading(true)
 
-        const people = peopleDB.list()
+        apiCall().then((data) => {
+            setResultsAll(data)
+            setLoading(false)
+        })
 
         // TODO: make mock switch here
-        if (searchString) {
-            const r = people.filter(i => i.name.toLowerCase().includes(searchString))
-            setResultsAll(r)
-        } else {
-            setResultsAll(people)
-        }
-
-        setLoading(false)
-    }, [])
+    }, [apiCall])
 
     const fetch = useCallback((searchId: string = '') => {
         setLoading(true)
 
-        const people = peopleDB.list()
-
-        if (searchId) {
-            const r = people.find(i => i.id == searchId)
-            setResultsSingle(r)
-        }
-        // TODO: maybe throw error
+        apiCall(searchId).then((data) => {
+            setResultsSingle(data[0])
+            setLoading(false)
+        })
 
         setLoading(false)
-    }, [])
+    }, [apiCall])
 
     return {
         loading,

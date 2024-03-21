@@ -43,7 +43,9 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, showAll = true }) => {
     return (
         <span className={`flex ${color}`}>
             {countArray.map((_, index) =>
-                <FaStar key={index} />
+                <span className='mr-1' key={index} >
+                    <FaStar size='1.3rem' />
+                </span>
             )}
         </span>
     )
