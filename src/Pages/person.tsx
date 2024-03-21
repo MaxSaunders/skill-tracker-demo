@@ -88,7 +88,7 @@ const Person = () => {
             <div className='col-span-1 m-4'>
                 <div className='p-2 text-white bg-transparent items-center w-full border-0'>
                     <div className='w-full justify-between items-center py-2 flex'>
-                        <span className={`user-icon ${getColor(user?.name)}`}>
+                        <span className={`user-icon ${getColor()}`}>
                             <span className='user-icon-initials'>
                                 {getInitials(user?.name)}
                             </span>
