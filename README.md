@@ -40,7 +40,4 @@ export default {
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
 # TODO:
-- Add search bar on people / skills / myskills / person pages
-- Add input field to add new skills on skill page
-- add "api" function to add skills and update my skills information
-- Add legend
+- add "api" function to update my skills information

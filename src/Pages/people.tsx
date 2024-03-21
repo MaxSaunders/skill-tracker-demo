@@ -28,6 +28,9 @@ const People = () => {
     const [pageResults, setPageResults] = useState<Person[]>([])
     const [page, setPage] = useState<number>(0)
     const [filter, setFilter] = useState<string>('')
+    // TODO: need to add these thing to url params
+    // - page number
+    // - filter info
     const [filteredResults, setFilteredResults] = useState<Person[]>([])
 
     useEffect(() => {
@@ -83,21 +86,21 @@ const People = () => {
                 <TableBody>
                     {pageResults.map(({ id, name, skills, topSkill }) =>
                         <TableRow key={id} className=''>
-                            <TableCell className="font-medium">
-                                <Link to={`/people/${id}`} className='hover:text-blue-500 flex items-center'>
+                            <TableCell className="font-medium p-0">
+                                <Link to={`/people/${id}`} className='p-4 hover:text-blue-500 flex items-center'>
                                     <span className='mr-2'>
                                         <FaUser />
                                     </span>
-                                    <span className='mr-2'>
+                                    <span className='mr-2 text-lg font-bold'>
                                         {name}
                                     </span>
                                 </Link>
                             </TableCell>
-                            <TableCell>
-                                <div className='grid 3xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 gap-y-2'>
+                            <TableCell className='p-0'>
+                                <Link to={`/people/${id}`} className='p-4 grid 3xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2 grid-cols-1 gap-y-2'>
                                     {GetTopSkills(skills).map(({ rating, name }) =>
-                                        <div className='flex items-center' key={name}>
-                                            <span className='font-bold mr-1'>
+                                        <div className='grid grid-cols-2 items-center' key={name}>
+                                            <span className='font-bold mr-1 text-lg'>
                                                 {name}
                                             </span>
                                             <span className={`flex items-baseline`}>
@@ -105,24 +108,24 @@ const People = () => {
                                             </span>
                                         </div>
                                     )}
-                                </div>
+                                </Link>
                             </TableCell>
-                            <TableCell>
-                                <div className='flex items-center min-h-full'>
-                                    <span className='font-bold mr-1 text-yellow-500'>
+                            <TableCell className='p-0'>
+                                <Link to={`/people/${id}`} className='p-4 grid grid-cols-2 items-center min-h-full'>
+                                    <span className='font-bold mr-1 text-yellow-500 text-lg'>
                                         {topSkill?.name}
                                     </span>
                                     <span className={`flex items-baseline text-yellow-500`}>
                                         <StarRating rating={topSkill?.rating} />
                                     </span>
-                                </div>
+                                </Link>
                             </TableCell>
-                            <TableCell>
-                                <span className='flex items-center'>
+                            <TableCell className='p-0'>
+                                <Link to={`/people/${id}`} className='p-4 flex items-center'>
                                     <span className='mr-2'>
                                         Angry Boi
                                     </span>
-                                </span>
+                                </Link>
                             </TableCell>
                         </TableRow>
                     )}
